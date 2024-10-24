@@ -35,6 +35,48 @@ from typing import Callable, Iterable
 # TODO: Implement for Task 0.1.
 
 
+def is_close(num1: float, num2: float) -> bool:
+    return abs(num1 - num2) < 1e-2 
+
+
+def mul(num1: float, num2: float) -> float:
+    return num1 * num2
+
+
+def max(num1: float, num2: float) -> float:
+    return num1 if num1 > num2 else num2
+
+
+def add(num1: float, num2: float) -> float:
+    return num1 + num2
+
+
+def neg(num1: float) -> float:
+    return -num1
+
+
+def id(num: float) -> float:
+    return num
+
+
+def inv(num: float) -> float:
+    return 1.0 / num
+
+
+def relu(num: float) -> float:
+    return num if num > 0 else 0.0
+
+
+def relu_back(num1: float, num2: float) -> float:
+    return num2 if num1 > 0 else 0.0
+
+
+def lt(num1: float, num2: float) -> float:
+    return float(num1 < num2)
+
+
+def eq(num1: float, num2: float) -> float:
+    return float(num1 == num2)
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
