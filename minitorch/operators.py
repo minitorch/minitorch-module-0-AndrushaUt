@@ -52,7 +52,7 @@ def add(num1: float, num2: float) -> float:
 
 
 def neg(num1: float) -> float:
-    return -num1
+    return - num1
 
 
 def id(num: float) -> float:
@@ -77,6 +77,27 @@ def lt(num1: float, num2: float) -> float:
 
 def eq(num1: float, num2: float) -> float:
     return float(num1 == num2)
+
+
+def sigmoid(num: float) -> float:
+    return 1.0/(1.0 + math.exp(-num)) if num >=0 else math.exp(num)/(1.0 + math.exp(num))
+
+
+def log(num: float) -> float:
+    return math.log(num + 1e-6)
+
+
+def exp(num: float) -> float:
+    return math.exp(num)
+
+
+def log_back(num: float) -> float:
+    return 1.0 / num
+
+
+def inv_back(num: float) -> float:
+    return - 1.0 / (num ** 2)
+
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
