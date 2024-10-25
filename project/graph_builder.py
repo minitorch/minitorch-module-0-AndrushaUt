@@ -2,6 +2,7 @@ import networkx as nx
 from dataclasses import dataclass
 import minitorch
 
+
 if hasattr(minitorch, "Scalar"):
     Scalar = minitorch.Scalar  # type: ignore
 else:
