@@ -98,6 +98,7 @@ def log_back(num: float) -> float:
 def inv_back(num: float) -> float:
     return - 1.0 / (num ** 2)
 
+
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
@@ -114,4 +115,40 @@ def inv_back(num: float) -> float:
 # - prod: take the product of lists
 
 
-# TODO: Implement for Task 0.3.
+def map(fn: Callable[[float], float]) -> Callable[[Iterable[float]], Iterable[float]]:
+    return lambda x: [fn(el) for el in x]
+
+
+def negList(ls: Iterable[float]) -> Iterable[float]:
+    return map(neg)(ls)
+
+
+def zipWith(
+    fn: Callable[[float, float], float]
+) -> Callable[[Iterable[float], Iterable[float]], Iterable[float]]:
+    return lambda x, y: [fn(x[i], y[i]) for i in range(len(x))]
+
+
+def addLists(ls1: Iterable[float], ls2: Iterable[float]) -> Iterable[float]:
+    return zipWith(add)(ls1, ls2)
+
+
+def reduce(
+    fn: Callable[[float, float], float], start: float
+) -> Callable[[Iterable[float]], float]:
+    def foo(ls: Iterable[float]) -> float:
+        old_result = start
+        for el in ls:
+            old_result = fn(el, old_result)
+        
+        return old_result
+
+    return foo
+
+
+def sum(ls: Iterable[float]) -> float:
+    return reduce(add, 0.0)(ls)
+
+
+def prod(ls: Iterable[float]) -> float:
+    return reduce(mul, 1.0)(ls)
